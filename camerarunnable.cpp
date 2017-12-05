@@ -1,4 +1,4 @@
-#include "filterrunnable.h"
+#include "camerarunnable.h"
 
 #include <QDebug>
 #include <QResource>
@@ -12,9 +12,9 @@
 
 #include "scene.h"
 
-FilterRunnable::FilterRunnable( VideoFilter * filter ) : m_filter(filter),
-                                                         markerDetector( new aruco::MarkerDetector ),
-                                                         cameraParameters( new aruco::CameraParameters )
+CameraRunnable::CameraRunnable( CameraFilter * filter ) : m_filter(filter),
+                                                          markerDetector( new aruco::MarkerDetector ),
+                                                          cameraParameters( new aruco::CameraParameters )
 {
     texture = new QOpenGLTexture( QOpenGLTexture::Target2D );
     texture->setMinificationFilter( QOpenGLTexture::Nearest );
@@ -53,7 +53,7 @@ FilterRunnable::FilterRunnable( VideoFilter * filter ) : m_filter(filter),
     }
 }
 
-FilterRunnable::~FilterRunnable()
+CameraRunnable::~CameraRunnable()
 {
     qDebug()<<"{destructor FilterRunnable}";
 }
@@ -82,7 +82,7 @@ FilterRunnable::~FilterRunnable()
  * @param flags Para Desktop: flags = QFlags(0x1)
  * @return
  */
-QVideoFrame FilterRunnable::run( QVideoFrame *input,
+QVideoFrame CameraRunnable::run( QVideoFrame *input,
                                  const QVideoSurfaceFormat &surfaceFormat,
                                  QVideoFilterRunnable::RunFlags flags )
 {
@@ -202,7 +202,7 @@ QVideoFrame FilterRunnable::run( QVideoFrame *input,
     }
 }
 
-QImage FilterRunnable::wrapper( const QVideoFrame & input )
+QImage CameraRunnable::wrapper( const QVideoFrame & input )
 {
     // Slow and inefficient path.
     // Ideally what's on the GPU should remain on the GPU, instead of readbacks like this.

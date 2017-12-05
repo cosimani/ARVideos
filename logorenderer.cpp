@@ -171,6 +171,7 @@ void LogoRenderer::render()
             break;
 
         case 5:
+        case 1:
         case 320:
         case 256:
             qDebug() << "marcador" << detector.at( i ).first;

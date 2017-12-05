@@ -99,7 +99,7 @@ void Scene::showEvent( QShowEvent * )
     this->configurarWidget();
 }
 
-void Scene::resizeEvent(QResizeEvent *e)
+void Scene::resizeEvent(QResizeEvent *)
 {
     this->configurarWidget();
 

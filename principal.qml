@@ -53,8 +53,8 @@ Item  {
 
         viewfinder.resolution: Qt.size(640, 480)
 
-//        position: Camera.FrontFace
-        position: Camera.BackFace
+        position: Camera.FrontFace
+//        position: Camera.BackFace
     }
 
     VideoOutput  {
@@ -68,7 +68,7 @@ Item  {
         source: camera
 
         focus : visible
-        filters: [videoFilter]
+        filters: [cameraFilter]
 //        orientation: 270
     }
 
@@ -105,8 +105,8 @@ Item  {
 
     }
 
-    VideoFilter  {
-        id: videoFilter
+    CameraFilter  {
+        id: cameraFilter
     }
 
     Mp4Filter  {

@@ -8,7 +8,6 @@ TEMPLATE = app
 DEFINES += NO_DEBUG_ARUCO
 
 SOURCES += main.cpp \
-    videofilter.cpp \
     scene.cpp \
     aruco/ar_omp.cpp \
     aruco/arucofidmarkers.cpp \
@@ -20,13 +19,14 @@ SOURCES += main.cpp \
     aruco/markerdetector.cpp \
     aruco/subpixelcorner.cpp \
     texturebuffer.cpp \
-    filterrunnable.cpp \
     backend.cpp \
     logorenderer.cpp \
     fboinsgrenderer.cpp \
     geometryengine.cpp \
     mp4runnable.cpp \
-    mp4filter.cpp
+    mp4filter.cpp \
+    camerafilter.cpp \
+    camerarunnable.cpp
 
 RESOURCES += qml.qrc \
     files.qrc \
@@ -40,7 +40,6 @@ QML_IMPORT_PATH =
 #include(deployment.pri)
 
 HEADERS += \
-    videofilter.h \
     scene.h \
     aruco/ar_omp.h \
     aruco/aruco.h \
@@ -54,13 +53,14 @@ HEADERS += \
     aruco/markerdetector.h \
     aruco/subpixelcorner.h \
     texturebuffer.h \
-    filterrunnable.h \
     backend.h \
     logorenderer.h \
     fboinsgrenderer.h \
     geometryengine.h \
     mp4filter.h \
-    mp4runnable.h
+    mp4runnable.h \
+    camerafilter.h \
+    camerarunnable.h
 
 ! contains(ANDROID_TARGET_ARCH, armeabi-v7a)  {  # Si no es para Android entonces para Desktop
 
@@ -150,7 +150,6 @@ FORMS += \
     scene.ui
 
 DISTFILES += \
-    qmlcamera.qml \
     android/AndroidManifest.xml \
     android/res/values/libs.xml \
     android/build.gradle \

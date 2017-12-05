@@ -56,7 +56,7 @@ private:
 
 protected:
     void showEvent( QShowEvent * );
-    void resizeEvent( QResizeEvent * e );
+    void resizeEvent(QResizeEvent *);
 
 
 };

@@ -1,5 +1,5 @@
-#ifndef FILTERRUNNABLE_H
-#define FILTERRUNNABLE_H
+#ifndef CAMERARUNNABLE_H
+#define CAMERARUNNABLE_H
 
 #include <QAbstractVideoFilter>
 #include <QOpenGLTexture>
@@ -16,18 +16,18 @@
 
 #include <QDebug>
 
-class VideoFilter;
+class CameraFilter;
 
-class FilterRunnable : public QVideoFilterRunnable
+class CameraRunnable : public QVideoFilterRunnable
 {
 public:
-    FilterRunnable( VideoFilter *filter );
-    ~FilterRunnable();
+    CameraRunnable( CameraFilter *filter );
+    ~CameraRunnable();
 
     QVideoFrame run( QVideoFrame *input, const QVideoSurfaceFormat &surfaceFormat, RunFlags flags ) Q_DECL_OVERRIDE;
 
 private:
-    VideoFilter * m_filter;
+    CameraFilter * m_filter;
     QOpenGLTexture *texture;
     aruco::MarkerDetector * markerDetector;
     std::vector< aruco::Marker > detectedMarkers;
@@ -36,4 +36,4 @@ private:
     QImage wrapper(const QVideoFrame &input);
 
 };
-#endif // FILTERRUNNABLE_H
+#endif // CAMERARUNNABLE_H

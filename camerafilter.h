@@ -1,12 +1,12 @@
-#ifndef VIDEOFILTER
-#define VIDEOFILTER
+#ifndef CAMERAFILTER
+#define CAMERAFILTER
 
 #include <QAbstractVideoFilter>
 #include <QOpenGLTexture>
 
 #include <QDebug>
 
-class VideoFilter : public QAbstractVideoFilter
+class CameraFilter : public QAbstractVideoFilter
 {
     Q_OBJECT
 
@@ -15,5 +15,5 @@ public:
 
 };
 
-#endif // VIDEOFILTER
+#endif // CAMERAFILTER
 
