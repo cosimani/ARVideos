@@ -47,6 +47,19 @@ void BackEnd::setImage(const QImage &value)
     emit imageChanged( m_image );
 }
 
+QImage BackEnd::getImage2() const
+{
+    return m_image2;
+}
+
+void BackEnd::setImage2(const QImage &value)
+{
+    m_image2 = value;
+
+    emit imageChanged2( m_image2 );
+}
+
+
 Detector BackEnd::getDetector() const
 {
     return detector;

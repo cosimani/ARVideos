@@ -1,5 +1,6 @@
 <RCC>
     <qresource prefix="/">
         <file>principal.qml</file>
+        <file>TwoFingerArea.qml</file>
     </qresource>
 </RCC>

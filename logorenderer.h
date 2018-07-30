@@ -116,6 +116,10 @@ private:
     QOpenGLBuffer * videoBuffer;
     QOpenGLTexture * videoTexture;
 
+    QOpenGLBuffer * videoBuffer2;
+    QOpenGLTexture * videoTexture2;
+
+
     GeometryEngine *geometries;
     QQuaternion rotation;
 

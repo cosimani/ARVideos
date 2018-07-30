@@ -58,6 +58,7 @@ QVideoFrame Mp4Runnable::run( QVideoFrame *input,
         texture->bind();
 
         Scene::getInstancia()->getBackend()->setImage( image );
+        Scene::getInstancia()->getBackend()->setImage2( image );
 
         return QVideoFrame(new TextureBuffer( texture->textureId() ), input->size(), input->pixelFormat() );
 

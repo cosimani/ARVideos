@@ -139,7 +139,7 @@ contains(ANDROID_TARGET_ARCH, armeabi-v7a)  {  # Para Android
     ANDROID_EXTRA_LIBS = $$DIR_ANDROID_OPENCV/libs/armeabi-v7a/libopencv_java3.so
 
     VIDEO_FILES.files = \
-        ../videos/rentasonline.mp4
+        ../videos/video1.mp4
 
     VIDEO_FILES.path = /assets/videos
     INSTALLS += VIDEO_FILES

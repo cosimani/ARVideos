@@ -215,6 +215,47 @@ void LogoRenderer::render()
 
             break;
 
+        case 272:
+
+            matrix.setToIdentity();
+            matrix = detector.at( i ).second;
+            matrix.scale( 0.018 );
+            matrix.rotate( 90, 1, 0, 0 );
+//            matrix.translate( 0, 0, -0.01 );
+            matrix.translate( -4.75, 0, 0.5 );
+
+            program1.setUniformValue( "matrix", matrix );
+
+            videoTexture->setData( Scene::getInstancia()->getBackend()->getImage() );
+            videoBuffer->bind();
+            videoTexture->bind();
+            geometries->drawVideoGeometry( &program1 );
+
+            Scene::getInstancia()->reanudarVideo();
+
+            break;
+
+        case 336:
+
+            matrix.setToIdentity();
+            matrix = detector.at( i ).second;
+            matrix.scale( 0.018 );
+            matrix.rotate( 90, 1, 0, 0 );
+//            matrix.translate( 0, 0, -0.01 );
+            matrix.translate( -4.75, 0, 0.5 );
+
+            program1.setUniformValue( "matrix", matrix );
+
+            videoTexture2->setData( Scene::getInstancia()->getBackend()->getImage2() );
+            videoBuffer2->bind();
+            videoTexture2->bind();
+            geometries->drawVideoGeometry( &program1 );
+
+            Scene::getInstancia()->reanudarVideo();
+
+
+            break;
+
 
         default:;
         }
@@ -328,6 +369,39 @@ void LogoRenderer::loadVideo()
     videoTexture->setMinificationFilter( QOpenGLTexture::Nearest );
     videoTexture->setMagnificationFilter( QOpenGLTexture::Linear );
 
+
+
+    ///////////// Video 2
+
+    videoBuffer2 = new QOpenGLBuffer( QOpenGLBuffer::VertexBuffer );
+    videoBuffer2->create();
+
+    static const int coords2[1][4][3] = { { { +1, -1, 0 }, { -1, -1, 0 }, { -1, 0, 0 }, { +1, 0, 0 } } };
+
+    QVector<GLfloat> vertData2;
+    for (int i = 0; i < 1; ++i) {
+        for (int j = 0; j < 4; ++j) {
+            // vertex position
+            vertData2.append( coords2[i][j][0]);
+            vertData2.append( coords2[i][j][1]);
+            vertData2.append( coords2[ i ][ j ][ 2 ]);
+
+            // texture coordinate
+            if ( j==0 )  {  vertData2.append(1);  vertData2.append(0);  }
+            if ( j==1 )  {  vertData2.append(0);  vertData2.append(0);  }
+            if ( j==2 )  {  vertData2.append(0);  vertData2.append(1);  }
+            if ( j==3 )  {  vertData2.append(1);  vertData2.append(1);  }
+        }
+    }
+
+    if ( ! videoBuffer2->bind() )
+        qDebug() << "False / videoBuffer2 bind()";
+
+    videoBuffer2->allocate( vertData2.constData(), vertData2.count() * sizeof( GLfloat ) );
+
+    videoTexture2 = new QOpenGLTexture( QImage() );
+    videoTexture2->setMinificationFilter( QOpenGLTexture::Nearest );
+    videoTexture2->setMagnificationFilter( QOpenGLTexture::Linear );
 }
 
 

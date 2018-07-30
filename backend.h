@@ -39,6 +39,7 @@ class BackEnd : public QObject
     Q_PROPERTY(QString userName READ userName WRITE setUserName NOTIFY userNameChanged)
     Q_PROPERTY(QMatrix4x4 matriz MEMBER m_matriz READ getMatriz WRITE setMatriz NOTIFY matrizChanged)
     Q_PROPERTY(QImage image MEMBER m_image READ getImage WRITE setImage NOTIFY imageChanged)
+    Q_PROPERTY(QImage image2 MEMBER m_image2 READ getImage2 WRITE setImage2 NOTIFY imageChanged2)
     Q_PROPERTY(Detector det MEMBER detector READ getDetector WRITE setDetector NOTIFY detectorChanged)
 
 public:
@@ -54,6 +55,9 @@ public:
     QImage getImage() const;
     void setImage(const QImage &value);
 
+    QImage getImage2() const;
+    void setImage2(const QImage &value);
+
     Detector getDetector() const;
     void setDetector(const Detector &value);
 
@@ -61,13 +65,16 @@ signals:
     void userNameChanged( QString );
     void matrizChanged( QMatrix4x4 );
     void imageChanged( QImage );
+    void imageChanged2( QImage );
     void detectorChanged( Detector );
 
 private:
     QString m_userName;
     QMatrix4x4 m_matriz;
     QImage m_image;
+    QImage m_image2;
     Detector detector;
 };
 
 #endif // BACKEND_H
+
